@@ -6,7 +6,7 @@
 from PIL import Image, ImageDraw, ImageFont
 import json
 import textwrap
-from datetime import date, time
+from datetime import date, time, datetime
 from zoneinfo import ZoneInfo
 from pathlib import Path
 
@@ -87,5 +87,6 @@ draw.multiline_text((new_image.width/2, quote_base + 200*scale), text=text_with_
 new_image.show()
 new_image = new_image.resize((1440, 3216), Image.LANCZOS)
 new_image.save("wallpaper.png", quality=100)
+
 
 
