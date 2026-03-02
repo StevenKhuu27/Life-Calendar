@@ -7,6 +7,7 @@ from PIL import Image, ImageDraw, ImageFont
 import json
 import textwrap
 from datetime import date, time
+from pathlib import Path
 
 # Variables for image gen
 scale = 2
@@ -29,8 +30,10 @@ yellow_colour = (212, 175, 55)
 dark_grey_colour = (70, 65, 60)
 
 # Font
-font_small = ImageFont.truetype("arial.ttf", 52 * scale)
-font_large = ImageFont.truetype("arial.ttf", 100 * scale)
+base_path = Path(__file__).parent
+font_path = base_path / "font" / "static" / "PlayfairDisplay-Black.ttf"
+font_small = ImageFont.truetype(str(font_path), 52 * scale)
+font_large = ImageFont.truetype(str(font_path), 100 * scale)
 
 # Create new instance of image and Draw
 new_image = Image.new("RGB", image_size, color=bg_colour)
@@ -75,7 +78,7 @@ except FileNotFoundError:
 # Wrap the text to a specified width & join the list of lines with newline characters
 wrapped_lines = textwrap.wrap(quote, width=27)
 text_with_newlines = "\n".join(wrapped_lines)
-draw.multiline_text((new_image.width/2, quote_base + 180*scale), text=text_with_newlines, font=font_large, fill=yellow_colour, anchor="mm", stroke_width=3, spacing=20)
+draw.multiline_text((new_image.width/2, quote_base + 200*scale), text=text_with_newlines, font=font_large, fill=yellow_colour, anchor="mm", stroke_width=2, spacing=20)
 
 new_image.show()
 new_image = new_image.resize((1440, 3216), Image.LANCZOS)
