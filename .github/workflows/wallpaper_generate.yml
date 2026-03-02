@@ -3,10 +3,11 @@ name: Wallpaper Generation
 on: 
   push:
     branches:
-      - master
+      - main
   # schedule:
   #   - cron: ''
-
+  workflow_dispatch:
+  
 jobs:
   generate:
     runs-on: ubuntu-latest
