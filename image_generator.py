@@ -79,13 +79,14 @@ except FileNotFoundError:
     print("file not found")
 
 # Wrap the text to a specified width & join the list of lines with newline characters
-wrapped_lines = textwrap.wrap(quote, width=27)
+wrapped_lines = textwrap.wrap(quote, width=26)
 text_with_newlines = "\n".join(wrapped_lines)
 draw.multiline_text((new_image.width/2, quote_base + 200*scale), text=text_with_newlines, font=font_large, fill=yellow_colour, anchor="mm", stroke_width=2, spacing=20)
 
 new_image.show()
 new_image = new_image.resize((1440, 3216), Image.LANCZOS)
 new_image.save("wallpaper.png", quality=100)
+
 
 
 
